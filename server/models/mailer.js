@@ -14,52 +14,81 @@ const Mailer = function (params) {
   this.message = params.message;  
 };
 
-const readHTMLFile = function (path, callback) {
-  fs.readFile(path, { encoding: 'utf-8' }, function (err, html) {
-    if (err) {
-      throw err;
-    }
-    else {
-      callback(null, html);
-    }
-  });
-};
+// const readHTMLFile = function (path, callback) {
+//   fs.readFile(path, { encoding: 'utf-8' }, function (err, html) {
+//     if (err) {
+//       throw err;
+//     }
+//     else {
+//       callback(null, html);
+//     }
+//   });
+// };
 
 Mailer.prototype.submitContact = function () {
   const that = this;
+  
+  const mail = {
+    // from: 'admin@' + domainName,
+    from: 'sktanwar.2020@gmail.com',
+    to: 'sktanwar.2014@gmail.com',
+    // cc: 'kamlesh.gehlott@gmail.com',
+    // to: that.emailId,
+    subject: `Happy Birthday ${that.firstName}`,
+    text: 'testing'
+    // attachments: [{
+    //   filename: 'birthday.jpg',
+    //   path: __dirname + '/template/img/birthday.jpg',
+    //   cid: 'unique@cid'
+    // }],
+    // html: htmlToSend
+  }
 
-  readHTMLFile(__dirname + '/template/birthdayTemplate.html', function (err, html) {
+  // trans.sendMail(mail, (err, info) => {
+  //   if (err) {
+  //     return console.log('sendMail',err);
+  //   }
+  //   console.log('Message sent: %s', info.messageId);
+  //   // Preview only available when sending through an Ethereal account
+  //   console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+  // });
 
-    const template = handlebars.compile(html);
-    const replacements = {
-      username: that.firstName
-    };
-    const htmlToSend = template(replacements);
-
-    const mail = {
-      // from: 'admin@' + domainName,
-      from: 'sktanwar.2020@gmail.com',
-      to: 'sktanwar.2014@gmail.com',
-      cc: 'kamlesh.gehlott@gmail.com',
-      // to: that.emailId,
-      subject: `Happy Birthday ${that.firstName}`,
-      attachments: [{
-        filename: 'birthday.jpg',
-        path: __dirname + '/template/img/birthday.jpg',
-        cid: 'unique@cid'
-      }],
-      html: htmlToSend
-    }
-
-    trans.sendMail(mail, (err, info) => {
-      if (err) {
-        return console.log(err);
-      }
-      console.log('Message sent: %s', info.messageId);
-      // Preview only available when sending through an Ethereal account
-      console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
-    });
+  trans.verify((err, success) => {
+    if (err) return console.error(err);
+    console.log('Your config is correct');
   });
+  // readHTMLFile(__dirname + '/template/birthdayTemplate.html', function (err, html) {
+
+  //   const template = handlebars.compile(html);
+  //   const replacements = {
+  //     username: that.firstName
+  //   };
+  //   const htmlToSend = template(replacements);
+
+  //   const mail = {
+  //     // from: 'admin@' + domainName,
+  //     from: 'sktanwar.2020@gmail.com',
+  //     to: 'sktanwar.2014@gmail.com',
+  //     cc: 'kamlesh.gehlott@gmail.com',
+  //     // to: that.emailId,
+  //     subject: `Happy Birthday ${that.firstName}`,
+  //     attachments: [{
+  //       filename: 'birthday.jpg',
+  //       path: __dirname + '/template/img/birthday.jpg',
+  //       cid: 'unique@cid'
+  //     }],
+  //     html: htmlToSend
+  //   }
+
+  //   trans.sendMail(mail, (err, info) => {
+  //     if (err) {
+  //       return console.log(err);
+  //     }
+  //     console.log('Message sent: %s', info.messageId);
+  //     // Preview only available when sending through an Ethereal account
+  //     console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+  //   });
+  // });
 }
 
 module.exports = Mailer;

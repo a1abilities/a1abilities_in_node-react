@@ -10,7 +10,6 @@ const mailAccountUser = 'sktanwar.2020@gmail.com';
 const mailAccountPass = '829044701486';
 
 const trans = nodemailer.createTransport(smtpTransport({
-  // service: mailService,
   service: 'smtp.gmail.com',
   tls: { rejectUnauthorized: false },
   auth: {
@@ -18,6 +17,5 @@ const trans = nodemailer.createTransport(smtpTransport({
     pass: mailAccountPass
   }
 }));
-
 
 module.exports = { trans: trans };
