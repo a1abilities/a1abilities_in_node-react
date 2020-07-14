@@ -1,10 +1,8 @@
 const nodemailer = require('nodemailer');
-const handlebars = require('handlebars');
-var fs = require('fs');
 
 
-const { trans } = require("../lib/mailtransporter");
-const { domainName } = require("../lib/config");
+
+const { trans } = require("../lib/mailtransporter.js");
 
 const Mailer = function (params) {
   this.firstName = params.firstName;
@@ -14,42 +12,20 @@ const Mailer = function (params) {
   this.message = params.message;  
 };
 
-const readHTMLFile = function (path, callback) {
-  fs.readFile(path, { encoding: 'utf-8' }, function (err, html) {
-    if (err) {
-      throw err;
-    }
-    else {
-      callback(null, html);
-    }
-  });
-};
 
 Mailer.prototype.submitContact = function () {
   const that = this;
 
-  readHTMLFile(__dirname + '/template/birthdayTemplate.html', function (err, html) {
-
-    const template = handlebars.compile(html);
-    const replacements = {
-      username: that.firstName
-    };
-    const htmlToSend = template(replacements);
-
-    const mail = {
-      // from: 'admin@' + domainName,
+  const mail = {
       from: 'hr@a1abilities.com.au',
-    // to: 'sktanwar.2014@gmail.com',
-     // cc: 'kamlesh.gehlott@gmail.com',
-      // to: that.emailId,
-      subject: `Happy Birthday ${that.firstName}`,
-      attachments: [{
-        filename: 'birthday.jpg',
-        path: __dirname + '/template/img/birthday.jpg',
-        cid: 'unique@cid'
-      }],
-      html: htmlToSend
-    }
+      to: 'hr@a1abilities.com.au',
+      cc: 'kamlesh.gehlott@gmail.com',
+      subject: `Contact by ${that.firstName}, ${that.email}`,     
+      html: ` <p>Name : ${that.firstName} ${that.lastName}</p><br/>
+              <p>Email : ${that.email}</p><br/>
+              <p>Mobile : ${that.mobile}</p><br/>
+              <p>Message : ${that.message}</p><br/>`
+  }
 
     trans.sendMail(mail, (err, info) => {
       if (err) {
@@ -59,7 +35,6 @@ Mailer.prototype.submitContact = function () {
       // Preview only available when sending through an Ethereal account
       console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
     });
-  });
 }
 
 module.exports = Mailer;

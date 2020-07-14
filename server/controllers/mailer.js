@@ -13,7 +13,7 @@ const submitContact = async function (req, res, next) {
 console.log(params);
   try {
 		const newActivity = new Mailer(params);
-		const result = await newActivity.submitContact();		
+		const result = await newActivity.submitContact();
 		res.send({ result: result });
 	} catch (err) {
 		next(err);

@@ -1,26 +1,22 @@
 const MySQL = require("mysql");
 
 let dbOptions = '';
-// let dbName = 'appointment_ms';
-const { env, dbName } = require("./databaseMySQL");
+const { env, dbName } = require("./database.js");
 
-// if (env === 'prod') {
-   // dbOptions = {
-   //    host: 'localhost',
-   //    user: 'root',
-   //    password : 'ekLZGG7L2bUYvpBv',
-   //    port: 3306
-   //    // database: 'rentronics'
-   // };
-// } else {
+if (env === 'prod') {
+   dbOptions = {
+      host: 'localhost',
+      user: 'root',
+      password : 'ekLZGG7L2bUYvpBv',
+      port: 3306
+   };
+} else {
    dbOptions = {
       host: 'localhost',
       user: 'root',
       password: '',
-      // database: 'rentronics'
    };
-// }
-
+}
 
 let connectionPool = MySQL.createPool({ host: dbOptions.host, user: dbOptions.user, password: dbOptions.password, port: dbOptions.port, database: dbName });
 
