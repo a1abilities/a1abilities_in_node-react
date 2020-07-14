@@ -10,7 +10,7 @@ const submitContact = async function (req, res, next) {
 		mobile: req.body.mobile,
 		message:  req.body.message,
 	}
-console.log(params);
+// console.log(params);
   try {
 		const newActivity = new Mailer(params);
 		const result = await newActivity.submitContact();

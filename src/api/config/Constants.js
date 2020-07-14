@@ -6,7 +6,6 @@
 // const KEY = `${ENV}-${PLATFORM}-${VERSION}`;
 
 
-
 export const API_URL = 'http://a1abilities.com.au/'; // Config[KEY].API_URL;
 export const AUTH_URL = 'http://a1abilities.com.au/'; // Config[KEY].AUTH_URL;
 export const API_CONSUMER = 'http://a1abilities.com.au/'; // Config[KEY].API_URL;
