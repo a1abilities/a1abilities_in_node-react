@@ -6,16 +6,18 @@ const { domainName, mailPass, mailService } = require("./config");
 // const mailAccountPass = mailPass
 
 
-const mailAccountUser = 'sktanwar.2020@gmail.com';
-const mailAccountPass = '829044701486';
+const mailAccountUser = 'hr@a1abilities.com.au';
+const mailAccountPass = 'JaiShriRam123#';
 
 const trans = nodemailer.createTransport(smtpTransport({
-  service: 'smtp.gmail.com',
+  // service: mailService,
+  service: 'smtpout.secureserver.net',
   tls: { rejectUnauthorized: false },
   auth: {
     user: mailAccountUser,
     pass: mailAccountPass
   }
 }));
+
 
 module.exports = { trans: trans };

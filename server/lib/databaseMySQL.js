@@ -1,16 +1,16 @@
 const env = 'local';
-let DbName = 'appointment_ms';
-let domainName = 'appoint.a1abilities.co.nz';
-// let mailPass = 'y&GFhE16U';
+//let DbName = 'appointment_ms';
+let domainName = 'http://a1abilities.com.au';
+let mailPass = 'JaiShriRam123#';
 // let mailService = 'rentronics.saimrc.com'
 
 console.log('env db', env);
 
 if (env === 'prod') {
-  DbName = 'appointment_ms';
-  domainName = 'appoint.a1abilities.co.nz'
+ // DbName = 'appointment_ms';
+  domainName = 'http://a1abilities.com.au'
 } else {  
-  DbName = 'appointment_ms'
+  //DbName = 'appointment_ms'
   domainName = 'localhost:5000'
 }
 

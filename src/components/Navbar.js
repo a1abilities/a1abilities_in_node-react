@@ -17,7 +17,13 @@ export class Navbar extends Component {
           <label for="drop" class="toggle">Menu</label>
         <input type="checkbox" id="drop"></input>
             
+        
+           
             <ul class="menu pt-4 pr-5">
+            <li>
+                <a href="http://coronacheckarona.com/">Covid-19 Test</a>
+              </li>
+             
               <li>
                 <a href="#services">Services</a>
               </li>

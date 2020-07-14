@@ -3,17 +3,17 @@ const env = 'prod';
 
 let domainName;
 let mailPass = '';
-// let mailService = 'rentronics.a1abilities.co.nz'
-let mailService = 'smtp.gmail.com'
+let mailService = 'http://a1abilities.com.au/'
+//let mailService = 'pop.secureserver.net'
 
 if (env === 'uat') {
-  domainName = 'rentronicsuat.saimrc.com'
+  domainName = 'http://a1abilities.com.au/'
 } else if (env === 'prod') {
-  domainName = 'rentronics.a1abilities.co.nz';
-  mailService = 'smtp.gmail.com';
-  mailPass = 'y&GFh$16U';
+  domainName = 'http://a1abilities.com.au/';
+  mailService = 'smtpout.secureserver.net';
+  mailPass = 'JaiShriRam123#';
 } else if (env === 'dev') {
-  domainName = 'rentronicsdev.saimrc.com'
+  domainName = 'http://a1abilities.com.au/'
 } else {
   domainName = 'localhost:5000'
 }

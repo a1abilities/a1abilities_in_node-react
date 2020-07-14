@@ -12,14 +12,13 @@ import OurPartners from './components/OurPartners';
 import Map from './components/map';
 import Footer from './components/footer';
 import Thank from './components/thank';
-
 import {BrowserRouter as Router, HashRouter, Route, Switch} from 'react-router-dom';
 
 function App() {
   return (
     <div>
     <Router>
-     <Navbar />
+    <Navbar />
     <Home />
     <Services />
     <Blog/> 
@@ -29,8 +28,11 @@ function App() {
     <Whyus1/>
     <OurPartners/>
     <Contact/>
-    <Map/>
-     <Footer/>   
+    <Map />
+    <Footer/>
+    
+     
+      
             </Router>  
      
     </div>
